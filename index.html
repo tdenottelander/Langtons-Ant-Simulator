@@ -1,0 +1,33 @@
+<head>
+    <title>Hexantwalk</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="antwalk.js"></script>
+    <script src="sketch.js"></script>
+
+    <style>
+        body {
+            /* color: white; */
+            /* background-color: rgb(20,20,20); */
+            text-align: center;
+            font: 15px roboto, sans-serif;
+        }
+
+        #framerate {
+            position: fixed;
+            left: 1em;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bg"></div>
+    <h1>Hexantwalk</h1>
+    <p id="signature">Made by <a href="https://tomdenottelander.com">Tom den Ottelander</a></p>
+    <div id="CanvasHolder"></div>
+    <button onclick="move()" id="button">Move</button>
+    <button onclick="pause()" id="button">Pause</button>
+    <p id="counter">Counter: 0</p>
+    <p id="framerate">-fps</p>
+</body>

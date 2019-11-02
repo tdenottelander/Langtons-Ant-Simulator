@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "/Users/tomdenottelander/Git/AlienCreator"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Antwalk",
+		"liveServer.settings.port": 5501
+	}
+}
