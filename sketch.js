@@ -13,18 +13,22 @@ function setup(){
 
 
 function draw(){
-    // frameRate(500)
     framerateElement.textContent = Math.round(getFrameRate()) + "fps"
-    // background(50, 0, 0)
     antwalk.draw() 
 }
 
-function move(){
-    antwalk.moveAnt()
+function restart(){
+    antwalk = new Antwalk(10,10,500,500)
+    setPauseButtonText()
 }
 
 function pause(){
     antwalk.paused = !antwalk.paused
+    setPauseButtonText()
+}
+
+function setPauseButtonText(){
+    document.getElementById("pausebutton").textContent = antwalk.paused ? "Continue" : "Pause"
 }
 
 

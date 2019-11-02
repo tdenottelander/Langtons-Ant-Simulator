@@ -12,7 +12,6 @@ class Antwalk {
         this.gridX = gridX
         this.gridY = gridY
         this.size = width / gridX
-        console.log(this.size)
 
         for(let x = 0; x < this.gridX; x++){
             let column = []
@@ -22,13 +21,15 @@ class Antwalk {
             this.grid.push(column)
         }
 
-        console.log(this.grid)
-
         this.x = this.gridX/2
         this.y = this.gridY/2
         this.prevX = this.x
         this.prevY = this.y
         this.dir = 0
+
+        if(this.counterElement == null){
+            this.counterElement = document.getElementById("counter")
+        }
     }
 
     draw(){
@@ -45,11 +46,7 @@ class Antwalk {
                     this.drawPreviousSquare()
                     this.drawCurrentSquare()
                 }
-                
                 this.counterElement.textContent = "Counter: " + this.counter
-
-                
-                // console.log(this.counter + "  grid[0][0]=" + this.grid[0][0])
             }
         }
     }
@@ -97,11 +94,6 @@ class Antwalk {
             this.dir = (this.dir + 1) % 4
         } else {
             this.dir = (this.dir + 3) % 4
-        }
-
-        if(this.x == 0){
-            console.log(this)
-            // this.grid[400][2] = 1
         }
 
         this.grid[this.x][this.y] = 1 - this.grid[this.x][this.y]
