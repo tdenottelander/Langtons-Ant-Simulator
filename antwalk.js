@@ -1,7 +1,7 @@
 class Antwalk {
 
     speed = 1;
-    actionsPerDraw = 8;
+    actionsPerDraw = 1;
     counter = 0;
     initDraw = false
     paused = false
@@ -81,7 +81,7 @@ class Antwalk {
     drawAnt(){
         strokeWeight(0)
         fill("red")
-        circle((this.x + 0.5) * this.size, (this.y + 0.5) * this.size, this.size * 0.1)
+        circle((this.x + 0.5) * this.size, (this.y + 0.5) * this.size, this.size * 0.8)
     }
 
     setSquareDrawingMode(){
