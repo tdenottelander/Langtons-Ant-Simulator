@@ -1,0 +1,57 @@
+<head>
+    <title>Hexantwalk</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="antwalk.js"></script>
+    <script src="sketch.js"></script>
+
+    <style>
+        body {
+            color: lightgrey;
+            background-color: rgb(20,20,20);
+            text-align: center;
+            font: 15px roboto, sans-serif;
+        }
+
+        #framerate {
+            position: fixed;
+            left: 1em;
+            top: 0;
+        }
+
+        #signature {
+            color: rgb(71, 71, 71);
+            font-size: 0.7em;
+        }
+
+        #signature > a:visited, a:link {
+            color: rgb(104, 104, 104);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #signature > a:hover {
+            color: rgb(133, 133, 133);
+        }
+
+        canvas {
+            border: solid red 0.01em;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bg"></div>
+    <h1>Hexantwalk</h1>
+    <p id="signature">Made by <a href="https://tomdenottelander.com">Tom den Ottelander</a></p>
+    <div id="CanvasHolder"></div>
+    <button onclick="pause()" id="pausebutton">Pause</button>
+    <button onclick="restart()" id="restartbutton">Restart</button>
+    <button onclick="move()" id="movebutton">Move</button>
+    <br>
+    <p id="speed">Speed: 1</p>
+    <button onclick="addSpeed(-1)" id="minusbutton">-</button>
+    <button onclick="addSpeed(1)" id="plusbutton">+</button>
+    <p id="counter">Counter: 0</p>
+    <p id="framerate">-fps</p>
+</body>

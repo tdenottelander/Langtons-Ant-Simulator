@@ -1,17 +1,20 @@
 class Antwalk {
 
     speed = 1;
-    actionsPerDraw = 1;
+    actionsPerDraw = 5;
     counter = 0;
     initDraw = false
     paused = false
     counterElement;
+    // antcolor = '#097ae4'
+    antcolor = 'yellow'
 
-    constructor(gridX, gridY, width, height){
+    constructor(gridX, gridY, width, pattern){
         this.grid = []
         this.gridX = gridX
         this.gridY = gridY
         this.size = width / gridX
+        this.pattern = pattern.split('')
 
         for(let x = 0; x < this.gridX; x++){
             let column = []
@@ -33,6 +36,10 @@ class Antwalk {
     }
 
     draw(){
+        this.color_from = color(20,20,20)
+        this.color_to = color(40,240,40)
+        // this.color_to = color(190,80,7)
+
         if(!this.initDraw){
             this.drawGrid()
             this.initDraw = true
@@ -58,7 +65,6 @@ class Antwalk {
                 this.drawSquare(x, y)
             }
         }
-
         this.drawAnt()
     }
 
@@ -74,29 +80,32 @@ class Antwalk {
     }
 
     drawSquare(x, y){
-        this.grid[x][y] == 1 ? fill(20,20,20) : fill(255)
+        let color = lerpColor(this.color_from, this.color_to, this.grid[x][y] / this.pattern.length )
+        fill(color)
         rect(x * this.size, y * this.size, this.size, this.size)
     }
 
     drawAnt(){
         strokeWeight(0)
-        fill("red")
+        fill(this.antcolor)
         circle((this.x + 0.5) * this.size, (this.y + 0.5) * this.size, this.size * 0.8)
     }
 
     setSquareDrawingMode(){
-        strokeWeight(0.1)
+        strokeWeight(0.01 * this.size)
         stroke(200)
     }
 
     moveAnt(){
-        if(this.grid[this.x][this.y] == 0){
-            this.dir = (this.dir + 1) % 4
-        } else {
-            this.dir = (this.dir + 3) % 4
+        for(let i = 0; i < this.pattern.length; i++){
+            if(this.grid[this.x][this.y] == i){
+                let change = this.pattern[i] == 'L' ? 3 : 1
+                this.dir = (this.dir + change) % 4
+                break;
+            }
         }
 
-        this.grid[this.x][this.y] = 1 - this.grid[this.x][this.y]
+        this.grid[this.x][this.y] = (this.grid[this.x][this.y] + 1) % this.pattern.length
         // console.log("X=" + this.x + "  Y=" + this.y + "  dir=" + this.dir)
 
         this.prevX = this.x

@@ -1,5 +1,5 @@
 var framerateElement;
-var antwalk = new Antwalk(10,10, 500, 500)
+var antwalk = new Antwalk(10,10, 500, "RL")
 
 function setup(){
     var width = 500
@@ -9,8 +9,15 @@ function setup(){
     framerateElement = document.getElementById("framerate")
     frameRate(120)
     antwalk.counterElement = document.getElementById("counter")
+    input = createInput('RL');
+    button = createButton("Input pattern");
+    button.mousePressed(newPattern);
+
 }
 
+function newPattern(){
+    restart()
+}
 
 function draw(){
     framerateElement.textContent = Math.round(getFrameRate()) + "fps"
@@ -18,7 +25,7 @@ function draw(){
 }
 
 function restart(){
-    antwalk = new Antwalk(10,10,500,500)
+    antwalk = new Antwalk(10,10,500,input.value())
     setPauseButtonText()
 }
 
