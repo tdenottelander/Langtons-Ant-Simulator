@@ -10,7 +10,10 @@ function setup(){
     setupHexWalk(initPattern)
     // setupSquareWalk()
     input = createInput("RL");
+    input.parent(document.getElementById("inputpattern"))
+    // document.getElementById("inputpattern").appendChild(input.Element)
     button = createButton("Input pattern");
+    button.parent(document.getElementById("inputpattern"))
     button.mousePressed(restart);
 }
 
@@ -25,8 +28,9 @@ function setupHexWalk(pattern){
     }
     walktype = "hex"
     width = 800
-    height = 500
+    height = 700
     reset()
+    displayPatterns("hex")
     antwalk = new Hexwalk(10, width, height, pattern)
     antwalk.counterElement = document.getElementById("counter")
 }
@@ -36,11 +40,17 @@ function setupSquareWalk(pattern){
         pattern = input.value()
     }
     walktype = "square"
-    width = 500
-    height = 500
+    width = 700
+    height = 700
     reset()
+    displayPatterns("square")
     antwalk = new Squarewalk(10, 10, width, pattern)
     antwalk.counterElement = document.getElementById("counter")
+}
+
+function displayPatterns(type){
+    document.getElementById("hexpatterns").style.display = type == "hex" ? "initial" : "none"
+    document.getElementById("squarepatterns").style.display = type == "square" ? "initial" : "none"
 }
 
 function reset(){
@@ -48,6 +58,7 @@ function reset(){
     document.getElementById("speed").textContent = "Speed: 1"
     clear()
     setupCanvas()
+    setPauseButtonText("Start")
 }
 
 function draw(){
@@ -65,7 +76,7 @@ function restart(){
             setupSquareWalk(input.value())
             break;
     }
-    setPauseButtonText()
+    setPauseButtonText("Start")
 }
 
 function pause(){
@@ -73,8 +84,12 @@ function pause(){
     setPauseButtonText()
 }
 
-function setPauseButtonText(){
-    document.getElementById("pausebutton").textContent = antwalk.paused ? "Continue" : "Pause"
+function setPauseButtonText(text){
+    if(text == null){
+        document.getElementById("pausebutton").textContent = antwalk.paused ? "Continue" : "Pause"
+    } else {
+        document.getElementById("pausebutton").textContent = text
+    }
 }
 
 function move(){
@@ -88,5 +103,12 @@ function addSpeed(change){
     document.getElementById("speed").textContent = "Speed: " + newSpeed
 }
 
+function setPattern(pattern){
+    input.value(pattern)
+    restart()
+}
 
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
 

@@ -4,7 +4,7 @@ class Hexwalk {
     actionsPerDraw = 1;
     counter = 0;
     initDraw = false
-    paused = false
+    paused = true
     counterElement;
     enlargeCounter = 0
     antcolor = 'yellow'
@@ -131,13 +131,20 @@ class Hexwalk {
     }
 
     moveAnt(){
-        for(let i = 0; i < this.pattern.length; i++){
-            if(this.grid[this.x][this.y] == i){
-                let change = this.pattern[i] == 'L' ? 5 : 1
-                this.dir = (this.dir + change) % 6
-                break;
-            }
+        let char = this.pattern[this.grid[this.x][this.y]]
+
+        if(char == 'L'){ // Up Left
+            this.dir = (this.dir + 5) % 6
+        } else if(char == 'R'){ // Up Right
+            this.dir = (this.dir + 1) % 6                    
+        } else if(char == 'B'){ // Back
+            this.dir = (this.dir + 3) % 6
+        } else if(char == 'Q'){ // Bottom Right
+            this.dir = (this.dir + 2) % 6
+        } else if(char == 'W'){ // Bottom Left
+            this.dir = (this.dir + 4) % 6
         }
+
 
         this.grid[this.x][this.y] = (this.grid[this.x][this.y] + 1) % this.pattern.length
         // console.log("X=" + this.x + "  Y=" + this.y + "  dir=" + this.dir)
@@ -200,6 +207,7 @@ class Hexwalk {
     }
 
     enlargeGrid(){
+        this.enlargeCounter++
         let newGridX = this.gridX * 2
         let newGridY = this.gridY * 2
 

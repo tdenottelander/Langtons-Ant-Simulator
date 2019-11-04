@@ -3,7 +3,7 @@ class Squarewalk {
     actionsPerDraw = 1;
     counter = 0;
     initDraw = false
-    paused = false
+    paused = true
     counterElement;
     enlargeCounter = 0
     antcolor = 'yellow'

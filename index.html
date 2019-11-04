@@ -1,5 +1,5 @@
 <head>
-    <title>Hexantwalk</title>
+    <title>Langton's Ant Simulator</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
     <script src="hexwalk.js"></script>
@@ -11,7 +11,7 @@
             color: lightgrey;
             background-color: rgb(20,20,20);
             text-align: center;
-            font: 15px roboto, sans-serif;
+            font: 1em roboto, sans-serif;
         }
 
         #framerate {
@@ -43,28 +43,81 @@
             color: red;
             display: none;
         }
+
+        button {
+            background-color: rgb(200,200,200);
+            border-radius: 0.5em;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: rgb(220,220,220);
+            cursor: pointer;
+        }
+
+        #buttons > *{
+            /* display: inline-block; */
+        }
+
+        
+        .column {
+        float: left;
+        width: 50%;
+        }
+
+        .row:after {
+        content: "";
+        display: table;
+        clear: both;
+        }
     </style>
 </head>
 
 <body>
     <div id="bg"></div>
-    <h1>Hexantwalk</h1>
-    <button onclick="setupHexWalk()" id="loadHexGrid">Load Hex Grid</button>
-    <button onclick="setupSquareWalk()" id="loadSquareGrid">Load Square Grid</button>
+    <h1>Langton's Ant Simulator</h1>
     <p id="signature">Made by <a href="https://tomdenottelander.com">Tom den Ottelander</a></p>
-    <div id="CanvasHolder"></div>
-    <p id="enlargewarning">Grid enlargement maximum reached<br></p>
-    <button onclick="pause()" id="pausebutton">Pause</button>
-    <button onclick="restart()" id="restartbutton">Restart</button>
-    <button onclick="move()" id="movebutton">Move</button>
-    <br>
-    <p id="speed">Speed: 1</p>
-    <button onclick="addSpeed(-100)" id="minusbutton">-100</button>
-    <button onclick="addSpeed(-10)" id="minusbutton">-10</button>
-    <button onclick="addSpeed(-1)" id="minusbutton">-1</button>
-    <button onclick="addSpeed(1)" id="plusbutton">+1</button>
-    <button onclick="addSpeed(10)" id="plusbutton">+10</button>
-    <button onclick="addSpeed(100)" id="plusbutton">+100</button>
-    <p id="counter">Counter: 0</p>
+    
+    <div class="row">
+        <div class="column">
+            <div id="CanvasHolder"></div>
+        </div>
+        <div class="column">
+            <p id="enlargewarning">Grid enlargement maximum reached<br></p>
+            <div id="buttons">
+                <button onclick="setupHexWalk()" id="loadHexGrid">Load Hex Grid</button>
+                <button onclick="setupSquareWalk()" id="loadSquareGrid" style="margin-bottom: 2em;">Load Square Grid</button>
+                <br >
+                <button onclick="pause()" id="pausebutton">Start</button>
+                <button onclick="restart()" id="restartbutton">Restart</button>
+                <button onclick="move()" id="movebutton">Move</button>
+                <p id="speed" style="margin-left: 3em; margin-right: 1em;">Speed: 1</p>
+                <button onclick="addSpeed(-100)" id="minusbutton">-100</button>
+                <button onclick="addSpeed(-10)" id="minusbutton">-10</button>
+                <button onclick="addSpeed(-1)" id="minusbutton">-1</button>
+                <button onclick="addSpeed(1)" id="plusbutton">+1</button>
+                <button onclick="addSpeed(10)" id="plusbutton">+10</button>
+                <button onclick="addSpeed(100)" id="plusbutton">+100</button>
+                <p id="counter" style="margin-left: 2em;">Counter: 0</p>
+            </div>
+
+            <div id="inputpattern"></div>
+
+            <div id="hexpatterns">
+                <p>Cool patterns for hexagonal grid walk</p>
+                <button onclick="setPattern('WFFLWL')">hexagonal spiral: WFFLWL</button><br>
+            </div>
+
+            <div id="squarepatterns">
+                <p>Cool patterns for squared grid walk</p>
+                <button onclick="setPattern('LLRR')">Symmetric pattern: LLRR</button><br>
+                <button onclick="setPattern('RLLR')">Symmetric pattern: RLLR</button><br>
+                <button onclick="setPattern('LRRRRRLLR')">Squared pattern: LRRRRRLLR</button><br>
+                <button onclick="setPattern('RRLLLRLLLRRR')">Traingular highway: RRLLLRLLLRRR</button><br>
+                <button onclick="setPattern('LLRRRLRLRLLR')">Convoluted highway: LLRRRLRLRLLR</button><br>
+            </div>
+        </div>
+    </div>
+
     <p id="framerate">-fps</p>
 </body>
