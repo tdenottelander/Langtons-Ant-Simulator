@@ -24,10 +24,9 @@ function setupHexWalk(pattern){
         pattern = input.value()
     }
     walktype = "hex"
-    clear()
     width = 800
     height = 500
-    setupCanvas()
+    reset()
     antwalk = new Hexwalk(10, width, height, pattern)
     antwalk.counterElement = document.getElementById("counter")
 }
@@ -37,12 +36,18 @@ function setupSquareWalk(pattern){
         pattern = input.value()
     }
     walktype = "square"
-    clear()
     width = 500
     height = 500
-    setupCanvas()
+    reset()
     antwalk = new Squarewalk(10, 10, width, pattern)
     antwalk.counterElement = document.getElementById("counter")
+}
+
+function reset(){
+    document.getElementById("enlargewarning").style.display = "none"
+    document.getElementById("speed").textContent = "Speed: 1"
+    clear()
+    setupCanvas()
 }
 
 function draw(){

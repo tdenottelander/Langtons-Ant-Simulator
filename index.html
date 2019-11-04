@@ -38,6 +38,11 @@
         canvas {
             /* border: solid red 0.1em; */
         }
+
+        #enlargewarning {
+            color: red;
+            display: none;
+        }
     </style>
 </head>
 
@@ -48,15 +53,18 @@
     <button onclick="setupSquareWalk()" id="loadSquareGrid">Load Square Grid</button>
     <p id="signature">Made by <a href="https://tomdenottelander.com">Tom den Ottelander</a></p>
     <div id="CanvasHolder"></div>
+    <p id="enlargewarning">Grid enlargement maximum reached<br></p>
     <button onclick="pause()" id="pausebutton">Pause</button>
     <button onclick="restart()" id="restartbutton">Restart</button>
     <button onclick="move()" id="movebutton">Move</button>
     <br>
     <p id="speed">Speed: 1</p>
+    <button onclick="addSpeed(-100)" id="minusbutton">-100</button>
     <button onclick="addSpeed(-10)" id="minusbutton">-10</button>
     <button onclick="addSpeed(-1)" id="minusbutton">-1</button>
     <button onclick="addSpeed(1)" id="plusbutton">+1</button>
     <button onclick="addSpeed(10)" id="plusbutton">+10</button>
+    <button onclick="addSpeed(100)" id="plusbutton">+100</button>
     <p id="counter">Counter: 0</p>
     <p id="framerate">-fps</p>
 </body>

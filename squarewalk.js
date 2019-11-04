@@ -5,7 +5,7 @@ class Squarewalk {
     initDraw = false
     paused = false
     counterElement;
-    // antcolor = '#097ae4'
+    enlargeCounter = 0
     antcolor = 'yellow'
 
     constructor(gridX, gridY, width, pattern){
@@ -128,13 +128,19 @@ class Squarewalk {
 
         if(!this.isInBounds(this.x, this.y)){
             console.log("Enlarge on counter " + this.counter + " with x=" + this.x + ",y=" + this.y)
-            this.enlargeGrid()
-            clear()
-            this.drawGrid()
+            if(this.enlargeCounter < 5){
+                this.enlargeGrid()
+                clear()
+                this.drawGrid()
+            } else {
+                this.paused = true
+                document.getElementById("enlargewarning").style.display = "initial"
+            }
         }
     }
 
     enlargeGrid(){
+        this.enlargeCounter++
         let newGridX = this.gridX * 2
         let newGridY = this.gridY * 2
 

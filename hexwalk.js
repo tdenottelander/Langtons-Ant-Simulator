@@ -6,7 +6,7 @@ class Hexwalk {
     initDraw = false
     paused = false
     counterElement;
-    // antcolor = '#097ae4'
+    enlargeCounter = 0
     antcolor = 'yellow'
 
     constructor(grid, width, height, pattern){
@@ -188,9 +188,14 @@ class Hexwalk {
 
         if(!this.isInBounds(this.x, this.y)){
             console.log("Enlarge on counter " + this.counter + " with x=" + this.x + ",y=" + this.y)
-            this.enlargeGrid()
-            clear()
-            this.drawGrid()
+            if(this.enlargeCounter < 5){
+                this.enlargeGrid()
+                clear()
+                this.drawGrid()
+            } else {
+                this.paused = true
+                document.getElementById("enlargewarning").style.display = "initial"
+            }
         }
     }
 
