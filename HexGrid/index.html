@@ -2,7 +2,8 @@
     <title>Hexantwalk</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
-    <script src="antwalk.js"></script>
+    <script src="hexwalk.js"></script>
+    <script src="squarewalk.js"></script>
     <script src="sketch.js"></script>
 
     <style>
@@ -35,7 +36,7 @@
         }
 
         canvas {
-            border: solid red 0.01em;
+            /* border: solid red 0.1em; */
         }
     </style>
 </head>
@@ -43,6 +44,8 @@
 <body>
     <div id="bg"></div>
     <h1>Hexantwalk</h1>
+    <button onclick="setupHexWalk()" id="loadHexGrid">Load Hex Grid</button>
+    <button onclick="setupSquareWalk()" id="loadSquareGrid">Load Square Grid</button>
     <p id="signature">Made by <a href="https://tomdenottelander.com">Tom den Ottelander</a></p>
     <div id="CanvasHolder"></div>
     <button onclick="pause()" id="pausebutton">Pause</button>
@@ -50,8 +53,10 @@
     <button onclick="move()" id="movebutton">Move</button>
     <br>
     <p id="speed">Speed: 1</p>
-    <button onclick="addSpeed(-1)" id="minusbutton">-</button>
-    <button onclick="addSpeed(1)" id="plusbutton">+</button>
+    <button onclick="addSpeed(-10)" id="minusbutton">-10</button>
+    <button onclick="addSpeed(-1)" id="minusbutton">-1</button>
+    <button onclick="addSpeed(1)" id="plusbutton">+1</button>
+    <button onclick="addSpeed(10)" id="plusbutton">+10</button>
     <p id="counter">Counter: 0</p>
     <p id="framerate">-fps</p>
 </body>

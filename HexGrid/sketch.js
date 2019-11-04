@@ -1,22 +1,48 @@
 var framerateElement;
-var antwalk = new Antwalk(10, 500, "LL")
+var antwalk;
+var canvas;
+var width, height;
+var walktype;
+var initPattern = "RL"
 
 function setup(){
-    var width = 500
-    var height = 500
-    canvas = createCanvas(width, height);
-    canvas.parent('CanvasHolder')
     framerateElement = document.getElementById("framerate")
-    frameRate(120)
-    antwalk.counterElement = document.getElementById("counter")
-    input = createInput('LL');
+    setupHexWalk(initPattern)
+    // setupSquareWalk()
+    input = createInput("RL");
     button = createButton("Input pattern");
-    button.mousePressed(newPattern);
-
+    button.mousePressed(restart);
 }
 
-function newPattern(){
-    restart()
+function setupCanvas(){
+    canvas = createCanvas(width, height);
+    canvas.parent('CanvasHolder')
+}
+
+function setupHexWalk(pattern){
+    if(pattern == null){
+        pattern = input.value()
+    }
+    walktype = "hex"
+    clear()
+    width = 800
+    height = 500
+    setupCanvas()
+    antwalk = new Hexwalk(10, width, height, pattern)
+    antwalk.counterElement = document.getElementById("counter")
+}
+
+function setupSquareWalk(pattern){
+    if(pattern == null){
+        pattern = input.value()
+    }
+    walktype = "square"
+    clear()
+    width = 500
+    height = 500
+    setupCanvas()
+    antwalk = new Squarewalk(10, 10, width, pattern)
+    antwalk.counterElement = document.getElementById("counter")
 }
 
 function draw(){
@@ -25,7 +51,15 @@ function draw(){
 }
 
 function restart(){
-    antwalk = new Antwalk(10,500,input.value())
+    clear()
+    switch (walktype){
+        case "hex":
+            setupHexWalk(input.value())
+            break;
+        case "square":
+            setupSquareWalk(input.value())
+            break;
+    }
     setPauseButtonText()
 }
 
