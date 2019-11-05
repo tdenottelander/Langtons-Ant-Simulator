@@ -108,6 +108,14 @@ function setPattern(pattern){
     restart()
 }
 
+function displayEnlargementWarning(bool){
+    document.getElementById("enlargewarning").style.display = bool ? "initial" : "none"
+}
+
+function displayEnlargmentInfo(bool){
+    document.getElementById("enlargeinfo").style.display = bool ? "initial" : "none"
+}
+
 // function windowResized() {
     // resizeCanvas(windowWidth, windowHeight);
 // }

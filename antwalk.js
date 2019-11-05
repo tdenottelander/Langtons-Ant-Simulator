@@ -14,12 +14,13 @@ class Antwalk {
 
         this.grid = []
         this.gridX = grid
-        if(type == "hex"){
+        this.type = type
+        if(this.type == "hex"){
             this.gridY = Math.round(3 * grid * height/700)
             this.size = width / grid * 0.6
             this.drawer = new Hexdrawer(this.size, this.pattern.length)
             this.walker = new Hexwalker(this.pattern)
-        } else if(type == "square"){
+        } else if(this.type == "square"){
             this.gridY = this.gridX
             this.size = width / this.gridX
             this.drawer = new Squaredrawer(this.size, this.pattern.length)
@@ -39,6 +40,7 @@ class Antwalk {
         this.prevX = this.x
         this.prevY = this.y
         this.dir = 0
+        this.needsEnlargement = false
 
         if(this.counterElement == null){
             this.counterElement = document.getElementById("counter")
@@ -48,6 +50,11 @@ class Antwalk {
     }
 
     draw(){
+        if(this.needsRedraw){
+            this.drawer.redraw(this.grid, this.x, this.y)
+            displayEnlargmentInfo(false)
+            this.needsRedraw = false
+        }
         if(!this.paused){
             for(let i = 0; i < this.actionsPerDraw; i++){
                 this.move()
@@ -57,8 +64,10 @@ class Antwalk {
 
     move(){
         this.moveAnt()
-        this.drawer.drawPrevShape(this.prevX, this.prevY, this.grid[this.prevX][this.prevY])
-        this.drawer.drawCurrShape(this.x, this.y, this.grid[this.x][this.y])
+        if(!this.needsRedraw){
+            this.drawer.drawPrevShape(this.prevX, this.prevY, this.grid[this.prevX][this.prevY])
+            this.drawer.drawCurrShape(this.x, this.y, this.grid[this.x][this.y])
+        }
         this.counter += 1
         this.counterElement.textContent = "Counter: " + this.counter
     }
@@ -74,13 +83,14 @@ class Antwalk {
         this.dir = result[2]
 
         if(!this.isInBounds(this.x, this.y)){
-            console.log("Enlarge on counter " + this.counter + " with x=" + this.x + ",y=" + this.y)
             if(this.enlargeCounter < 5){
+                console.log("Enlarge on counter " + this.counter + " with x=" + this.x + ",y=" + this.y)
+                this.needsRedraw = true
+                displayEnlargmentInfo(true)
                 this.enlargeGrid()
-                this.drawer.redraw(this.grid, this.x, this.y)
             } else {
                 this.paused = true
-                document.getElementById("enlargewarning").style.display = "initial"
+                displayEnlargementWarning(true)
             }
         }
     }

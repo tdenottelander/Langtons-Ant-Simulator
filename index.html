@@ -45,6 +45,11 @@
             display: none;
         }
 
+        #enlargeinfo {
+            color: yellow;
+            display: none;
+        }
+
         button {
             background-color: rgb(200,200,200);
             border-radius: 0.5em;
@@ -82,6 +87,8 @@
     <div class="row">
         <div class="column">
             <div id="CanvasHolder"></div>
+            <p id="enlargeinfo">Enlarging grid. This may take some seconds.</p>
+            <p id="enlargewarning">Grid enlargement maximum reached. Ending simulation<br></p>
         </div>
         <div class="column">
             <div id="buttons">
@@ -99,7 +106,6 @@
                 <button onclick="addSpeed(10)" id="plusbutton">+10</button>
                 <button onclick="addSpeed(100)" id="plusbutton">+100</button>
                 <p id="counter" style="margin-left: 2em;">Counter: 0</p>
-                <p id="enlargewarning">Grid enlargement maximum reached<br></p>
             </div>
 
             <div id="inputpattern"></div>
@@ -116,6 +122,8 @@
                 <button onclick="setPattern('LRRRRRLLR')">Squared pattern: LRRRRRLLR</button><br>
                 <button onclick="setPattern('RRLLLRLLLRRR')">Traingular highway: RRLLLRLLLRRR</button><br>
                 <button onclick="setPattern('LLRRRLRLRLLR')">Convoluted highway: LLRRRLRLRLLR</button><br>
+                <button onclick="setPattern('RFFB')">Pattern: RFFB</button><br>
+                
             </div>
         </div>
     </div>

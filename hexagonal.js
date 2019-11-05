@@ -30,9 +30,6 @@ class Hexdrawer{
         
         let coords = this.getScreenPoint(x, y)
         this.polygon(coords[0], coords[1], this.size * 0.5, 6)
-
-        fill(100)
-        strokeWeight(0)
     }
 
     drawPrevShape(x, y, level){
