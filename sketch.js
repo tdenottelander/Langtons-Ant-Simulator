@@ -95,10 +95,19 @@ function pause(){
 }
 
 function setPauseButtonText(text){
+    let pausebutton = document.getElementById("pausebutton")
     if(text == null){
-        document.getElementById("pausebutton").textContent = antwalk.paused ? "Continue" : "Pause"
+        if(antwalk.paused){
+            pausebutton.textContent = "Continue"
+            pausebutton.style.backgroundColor = "rgb(80, 187, 114)"
+        } else {
+            pausebutton.textContent = "Pause"
+            pausebutton.style.backgroundColor = "rgb(187, 171, 80)"
+        }
+
     } else {
-        document.getElementById("pausebutton").textContent = text
+        pausebutton.textContent = text
+        pausebutton.style.backgroundColor = "rgb(80, 187, 114)"
     }
 }
 

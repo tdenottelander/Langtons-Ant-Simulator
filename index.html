@@ -54,12 +54,17 @@
         button {
             background-color: rgb(200,200,200);
             border-radius: 0.5em;
+            border: none;
             font-size: 1em;
         }
 
         button:hover {
             background-color: rgb(220,220,220);
             cursor: pointer;
+        }
+
+        #pausebutton {
+            background-color: rgb(80, 187, 114);
         }
 
         z {
@@ -96,6 +101,10 @@
 
         #description{
             text-align: left;
+        }
+
+        a{
+            color: #EAF280;
         }
     </style>
 </head>
@@ -148,7 +157,8 @@
                     <button onclick="setPattern('WRL')">Instant highway: WRL</button><br>
                     <button onclick="setPattern('WRWQ')">Instant highway 2: WRWQ</button><br>
                     <button onclick="setPattern('WWRR')">Slow expanding symmetric hexagon: WWRR</button><br>
-                    
+                    <button onclick="setPattern('LQL')">Maze-like pattern: LQL</button><br>
+                    <button onclick="setPattern('RRW')">Maze-like pattern 2: RRW</button><br>
                 </div>
 
                 <div id="squarepatterns">
@@ -162,7 +172,7 @@
                     <button onclick="setPattern('RRLLLRLLLRRR')">Traingular highway: RRLLLRLLLRRR</button><br>
                     <button onclick="setPattern('LLRRRLRLRLLR')">Convoluted highway: LLRRRLRLRLLR</button><br>
                     <button onclick="setPattern('RFFB')">Pattern: RFFB</button><br>
-                    <button onclick="setPattern('RLBF')">Quick highway: RLBF</button><br>      
+                    <button onclick="setPattern('RLBF')">Quick highway: RLBF</button><br>
                     <button onclick="setPattern('RRLRR')">Squared pattern: RLRRLRRBF</button><br>
                     
                     
@@ -197,7 +207,10 @@
         </p>
 
         <h3>References</h3>
-        <a href="https://en.wikipedia.org/wiki/Langton%27s_ant" target="_blank">Wikipedia (Langton's Ant)</a>
+        <ul>
+        <li><a href="https://en.wikipedia.org/wiki/Langton%27s_ant" target="_blank">Wikipedia (Langton's Ant)</a></li>
+        <li><a href="https://brtmr.de/2015/10/05/hexadecimal-langtons-ant-2.html" target="_blank">Hexagonal Langton's ant</a> by Bastian Reitemeier</li>
+        </ul>
     </div>
 
     <p id="framerate">-fps</p>
