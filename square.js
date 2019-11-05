@@ -3,24 +3,24 @@ class Squaredrawer{
     constructor(size, levels){
         this.color_from = color(20,20,20)
         this.color_to = color(255,40,40)
-        this.antcolor = 'yellow'
+        this.antcolor = 'white'
         this.levels = levels
         this.size = size
     }
 
-    redraw(grid, antX, antY){
+    redraw(grid, antX, antY, dir){
         clear()
-        this.drawGrid(grid, antX, antY)
+        this.drawGrid(grid, antX, antY, dir)
     }
 
-    drawGrid(grid, antX, antY){
+    drawGrid(grid, antX, antY, dir){
         this.setShapeDrawingMode()
         for(let x = 0; x < grid.length; x++){
             for(let y = 0; y < grid[0].length; y++){
                 this.drawShape(x, y, grid[x][y])
             }
         }
-        this.drawAnt(antX, antY)
+        this.drawAnt(antX, antY, dir)
     }
 
     drawShape(x, y, level){
@@ -35,21 +35,33 @@ class Squaredrawer{
         this.drawShape(x, y, level)
     }
 
-    drawCurrShape(x, y, level){
+    drawCurrShape(x, y, dir, level){
         this.setShapeDrawingMode()
         this.drawShape(x, y, level)
-        this.drawAnt(x, y)
+        this.drawAnt(x, y, dir)
     }
 
     setShapeDrawingMode(){
         strokeWeight(0.01 * this.size)
-        stroke(200)
+        stroke(100)
     }
 
-    drawAnt(x, y){
+    drawAnt(x, y, dir){
         strokeWeight(0)
         fill(this.antcolor)
-        circle((x + 0.5) * this.size, (y + 0.5) * this.size, this.size * 0.8)    
+
+        translate((x + 0.5) * this.size, (y + 0.5) * this.size)
+        rotate((dir * 0.5 + 0.5) * PI)
+
+        let x1 = 0
+        let y1 = -0.3 * this.size
+        let x2 = this.size/4
+        let y2 = this.size/3
+        let x3 = -this.size/4
+        let y3 = this.size/3
+
+        triangle(x1, y1, x2, y2, x3, y3);
+        resetMatrix();
     }
 }
 

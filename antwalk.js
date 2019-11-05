@@ -46,12 +46,12 @@ class Antwalk {
             this.counterElement = document.getElementById("counter")
         }
 
-        this.drawer.drawGrid(this.grid, this.x, this.y)
+        this.drawer.drawGrid(this.grid, this.x, this.y, this.dir)
     }
 
     draw(){
         if(this.needsRedraw){
-            this.drawer.redraw(this.grid, this.x, this.y)
+            this.drawer.redraw(this.grid, this.x, this.y, this.dir)
             displayEnlargmentInfo(false)
             this.needsRedraw = false
         }
@@ -66,7 +66,7 @@ class Antwalk {
         this.moveAnt()
         if(!this.needsRedraw){
             this.drawer.drawPrevShape(this.prevX, this.prevY, this.grid[this.prevX][this.prevY])
-            this.drawer.drawCurrShape(this.x, this.y, this.grid[this.x][this.y])
+            this.drawer.drawCurrShape(this.x, this.y, this.dir, this.grid[this.x][this.y])
         }
         this.counter += 1
         this.counterElement.textContent = "Counter: " + this.counter

@@ -3,7 +3,7 @@ class Hexdrawer{
     constructor(size, levels){
         this.color_from = color(20,20,20)
         this.color_to = color(255,40,40)
-        this.antcolor = 'yellow'
+        this.antcolor = 'white'
         this.levels = levels
         this.size = size
     }
@@ -13,14 +13,14 @@ class Hexdrawer{
         this.drawGrid(grid, antX, antY)
     }
 
-    drawGrid(grid, antX, antY){
+    drawGrid(grid, antX, antY, dir){
         this.setShapeDrawingMode()
         for(let x = 0; x < grid.length; x++){
             for(let y = 0; y < grid[0].length; y++){
                 this.drawShape(x, y, grid[x][y])
             }
         }
-        this.drawAnt(antX, antY)
+        this.drawAnt(antX, antY, dir)
     }
 
     drawShape(x, y, level){
@@ -37,15 +37,15 @@ class Hexdrawer{
         this.drawShape(x, y, level)
     }
 
-    drawCurrShape(x, y, level){
+    drawCurrShape(x, y, dir, level){
         this.setShapeDrawingMode()
         this.drawShape(x, y, level)
-        this.drawAnt(x, y)
+        this.drawAnt(x, y, dir)
     }
 
     setShapeDrawingMode(){
         strokeWeight(0.01 * this.size)
-        stroke(200)
+        stroke(100)
     }
 
     polygon(x, y, radius, npoints) {
@@ -59,12 +59,24 @@ class Hexdrawer{
         endShape(CLOSE);
     }
 
-    drawAnt(x, y){
+    drawAnt(x, y, dir){
         strokeWeight(0)
         fill(this.antcolor)
 
         let coords = this.getScreenPoint(x, y)
-        circle(coords[0], coords[1], this.size * 0.6)
+
+        translate(coords[0], coords[1])
+        rotate((dir * (1/3) + (1/3)) * PI)
+
+        let x1 = 0
+        let y1 = -0.3 * this.size
+        let x2 = this.size/4
+        let y2 = this.size/5
+        let x3 = -this.size/4
+        let y3 = this.size/5
+
+        triangle(x1, y1, x2, y2, x3, y3);
+        resetMatrix();
     }
 
     getScreenPoint(x, y){

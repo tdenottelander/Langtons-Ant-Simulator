@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "."
+		},
+		{
+			"path": "/Users/tomdenottelander/Git/boids_settings/flockingboids"
 		}
 	],
 	"settings": {

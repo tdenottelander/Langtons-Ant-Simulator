@@ -62,6 +62,7 @@ function reset(){
 }
 
 function draw(){
+    strokeWeight(0)
     framerateElement.textContent = Math.round(getFrameRate()) + "fps"
     antwalk.draw() 
 }
