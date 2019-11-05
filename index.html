@@ -36,9 +36,9 @@
             color: rgb(133, 133, 133);
         }
 
-        canvas {
-            /* border: solid red 0.1em; */
-        }
+        /* canvas {
+            border: solid red 0.1em;
+        } */
 
         #enlargewarning {
             color: red;
@@ -61,9 +61,9 @@
             cursor: pointer;
         }
 
-        #buttons > *{
-            /* display: inline-block; */
-        }
+        /* #buttons > *{
+            display: inline-block;
+        } */
 
         
         .column {
@@ -77,8 +77,8 @@
         clear: both;
         }
 
-        .patterns{
-            
+        #description{
+            text-align: left;
         }
     </style>
 </head>
@@ -139,6 +139,32 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="description">
+        <h3>Description</h3>
+        <p>Langton's ant is a simulation of a cellular automaton. The ant walks on the grid. Each time he enters a cell, its direction is adjusted according to the pattern and the level of the cell. All cells start with level 0. The level of the cell is incremented each time the ant passes the cell. The level is cyclic, which means that if the ant passes a cell for the (n+1)-th time (with n being the length of the pattern), the level becomes 0 again. This simulator features a squared grid and a hexagonal grid, with 4 and 6 possible pattern actions respectively. The syntax for the actions is as follows:
+        </p>
+
+        <div class="row" style="text-align: center;">
+            <div class="column">
+                <p>Actions for the squared grid:</p>
+                <img src="SquareActions.svg" width="300em" ></img>
+            </div>
+            <div class="column">
+                <p>Actions for the hexagonal grid:</p>
+                <img src="HexActions.svg" width="300em"></img>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            
+            
+        </div>
+
+        <h3>Interface</h3>
+        <p>You can input your own patterns in the interface on the right. Click on the pre-specified patterns to load an interesting pattern. 
+        </p>
     </div>
 
     <p id="framerate">-fps</p>

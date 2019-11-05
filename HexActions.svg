@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Laag_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 320.7 333.8" style="enable-background:new 0 0 320.7 333.8;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;stroke:#000000;stroke-miterlimit:10;}
+	.st1{fill:#870000;stroke:#CCCCCC;stroke-miterlimit:10;}
+	.st2{fill:#F2F2F2;}
+	.st3{fill:#EAF280;}
+	.st4{font-family:'Roboto-Regular';}
+	.st5{font-size:55.3672px;}
+	.st6{font-size:10.9401px;}
+</style>
+<rect x="-404.8" y="-31.6" class="st0" width="825" height="825"/>
+<g>
+	<g>
+		<polygon class="st2" points="170.7,85 156.4,58.7 142.1,85 150.1,85 150.1,108.7 162.8,108.7 162.8,85 		"/>
+	</g>
+</g>
+<g>
+	<g>
+		<polygon class="st2" points="250,113.3 220.1,114.2 224.1,121.1 203.6,132.9 209.9,143.9 230.4,132 234.4,138.9 		"/>
+	</g>
+</g>
+<g>
+	<g>
+		<polygon class="st2" points="250.1,219.7 234.4,194.2 230.5,201.1 209.9,189.2 203.6,200.2 224.1,212 220.1,218.9 		"/>
+	</g>
+</g>
+<g>
+	<g>
+		<polygon class="st2" points="112.5,132.9 92,121.1 96,114.2 66.1,113.3 81.7,138.9 85.7,132 106.2,143.9 		"/>
+	</g>
+</g>
+<g>
+	<g>
+		<polygon class="st2" points="112.5,200.2 106.2,189.2 85.7,201.1 81.7,194.2 66.1,219.7 96,218.9 92,212 		"/>
+	</g>
+</g>
+<g>
+	<g>
+		<polygon class="st2" points="162.8,248.2 162.8,224.5 150.1,224.5 150.1,248.2 142.1,248.2 156.4,274.5 170.7,248.2 		"/>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 144.7064 49.7398)" class="st3 st4 st5">F</text>
+<text transform="matrix(1 0 0 1 168.2156 100.002)" class="st2 st4 st6">Forward</text>
+<text transform="matrix(1 0 0 1 224.4098 151.6259)" class="st2 st4 st6">Up Right</text>
+<text transform="matrix(1 0 0 1 52.7694 154.4536)" class="st2 st4 st6">Up Left</text>
+<text transform="matrix(1 0 0 1 59.3925 234.7001)" class="st2 st4 st6">Bottom Left</text>
+<text transform="matrix(1 0 0 1 193.8428 234.7003)" class="st2 st4 st6">Bottom Right</text>
+<text transform="matrix(1 0 0 1 170.7127 266.8452)" class="st2 st4 st6">Back</text>
+<text transform="matrix(1 0 0 1 24.5251 122.1347)" class="st3 st4 st5">L</text>
+<text transform="matrix(1 0 0 1 257.7554 124.5675)" class="st3 st4 st5">R</text>
+<text transform="matrix(1 0 0 1 138.1654 322.8941)" class="st3 st4 st5">B</text>
+<text transform="matrix(1 0 0 1 260.4551 255.1172)" class="st3 st4 st5">W</text>
+<text transform="matrix(1 0 0 1 17.8532 252.7541)" class="st3 st4 st5">Q</text>
+<polygon class="st1" points="191.2,109.1 124.9,109.1 91.7,166.6 124.9,224 191.2,224 224.4,166.6 "/>
+<polygon class="st2" points="158.1,136.2 136.5,197 179.6,197 "/>
+</svg>
