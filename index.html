@@ -76,6 +76,10 @@
         display: table;
         clear: both;
         }
+
+        .patterns{
+            
+        }
     </style>
 </head>
 
@@ -110,20 +114,29 @@
 
             <div id="inputpattern"></div>
 
-            <div id="hexpatterns">
-                <p>Cool patterns for hexagonal grid walk</p>
-                <button onclick="setPattern('WFFLWL')">hexagonal spiral: WFFLWL</button><br>
-            </div>
+            <div class="patterns">
+                <div id="hexpatterns">
+                    <p>Cool patterns for hexagonal grid walk</p>
+                    <button onclick="setPattern('WFFLWL')">hexagonal spiral: WFFLWL</button><br>
+                    <button onclick="setPattern('WRL')">Instant highway: WRL</button><br>
+                    <button onclick="setPattern('WRWQ')">Instant highway 2: WRWQ</button><br>
+                    <button onclick="setPattern('WWRR')">Slow expanding symmetric hexagon: WWRR</button><br>
+                    
+                </div>
 
-            <div id="squarepatterns">
-                <p>Cool patterns for squared grid walk</p>
-                <button onclick="setPattern('LLRR')">Symmetric pattern: LLRR</button><br>
-                <button onclick="setPattern('RLLR')">Symmetric pattern: RLLR</button><br>
-                <button onclick="setPattern('LRRRRRLLR')">Squared pattern: LRRRRRLLR</button><br>
-                <button onclick="setPattern('RRLLLRLLLRRR')">Traingular highway: RRLLLRLLLRRR</button><br>
-                <button onclick="setPattern('LLRRRLRLRLLR')">Convoluted highway: LLRRRLRLRLLR</button><br>
-                <button onclick="setPattern('RFFB')">Pattern: RFFB</button><br>
-                
+                <div id="squarepatterns">
+                    <p>Cool patterns for squared grid walk</p>
+                    <button onclick="setPattern('LLRR')">Symmetric pattern: LLRR</button><br>
+                    <button onclick="setPattern('RLLR')">Symmetric pattern: RLLR</button><br>
+                    <button onclick="setPattern('LRRRRRLLR')">Squared pattern: LRRRRRLLR</button><br>
+                    <button onclick="setPattern('RRLLLRLLLRRR')">Traingular highway: RRLLLRLLLRRR</button><br>
+                    <button onclick="setPattern('LLRRRLRLRLLR')">Convoluted highway: LLRRRLRLRLLR</button><br>
+                    <button onclick="setPattern('RFFB')">Pattern: RFFB</button><br>
+                    <button onclick="setPattern('RLBF')">Quick highway: RLBF</button><br>      
+                    <button onclick="setPattern('RRLRR')">Squared pattern: RLRRLRRBF</button><br>
+                    
+                    
+                </div>
             </div>
         </div>
     </div>
