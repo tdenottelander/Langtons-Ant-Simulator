@@ -4,6 +4,8 @@ var canvas;
 var width, height;
 var walktype;
 var initPattern = "RL"
+var delay;
+var delayCounter;
 
 function setup(){
     framerateElement = document.getElementById("framerate")
@@ -12,9 +14,11 @@ function setup(){
     input = createInput("RL");
     input.parent(document.getElementById("inputpattern"))
     // document.getElementById("inputpattern").appendChild(input.Element)
-    button = createButton("Input pattern");
+    button = createButton("Input pattern")
     button.parent(document.getElementById("inputpattern"))
     button.mousePressed(restart);
+    delay = 0
+    delayCounter = 0
 }
 
 function setupCanvas(){
@@ -62,9 +66,14 @@ function reset(){
 }
 
 function draw(){
-    strokeWeight(0)
     framerateElement.textContent = Math.round(getFrameRate()) + "fps"
-    antwalk.draw() 
+    if(delayCounter >= delay){
+        // strokeWeight(0)
+        antwalk.draw() 
+        delayCounter = 0
+    } else {
+        delayCounter++
+    }
 }
 
 function restart(){
@@ -101,7 +110,7 @@ function addSpeed(change){
     newSpeed = antwalk.actionsPerDraw + change
     newSpeed = Math.max(newSpeed, 1)
     antwalk.actionsPerDraw = newSpeed
-    document.getElementById("speed").textContent = "Speed: " + newSpeed
+    document.getElementById("speed").textContent = "Moves per update: " + newSpeed
 }
 
 function setPattern(pattern){
@@ -115,6 +124,13 @@ function displayEnlargementWarning(bool){
 
 function displayEnlargmentInfo(bool){
     document.getElementById("enlargeinfo").style.display = bool ? "initial" : "none"
+}
+
+function addDelay(change){
+    console.log("addDelay("+change+")")
+    delay += change
+    delay = Math.max(delay, 0)
+    document.getElementById("delay").textContent = "Delay per update: " + delay
 }
 
 // function windowResized() {

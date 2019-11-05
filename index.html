@@ -2,6 +2,7 @@
     <title>Langton's Ant Simulator</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="antwalk.js"></script>
     <script src="hexagonal.js"></script>
     <script src="square.js"></script>
@@ -61,6 +62,22 @@
             cursor: pointer;
         }
 
+        z {
+            background-color: rgb(200,200,200);
+            border-radius: 0.3em;
+            color: black;
+            font-size: 0.7em;
+            padding: 0.1em 0.3em 0.1em 0.3em;
+            /* padding-left: 0.3em;
+            padding-right: 0.3em; */
+
+        }
+
+        z:hover {
+            background-color: rgb(200,200,200);
+            cursor: pointer;
+        }
+
         /* #buttons > *{
             display: inline-block;
         } */
@@ -88,13 +105,13 @@
     <h1>Langton's Ant Simulator</h1>
     <p id="signature">Made by <a href="https://tomdenottelander.com">Tom den Ottelander</a></p>
     
-    <div class="row">
-        <div class="column">
+    <div class="w3-row" >
+        <div class="w3-col" style="width: 53em;">
             <div id="CanvasHolder"></div>
             <p id="enlargeinfo">Enlarging grid. This may take some seconds.</p>
             <p id="enlargewarning">Grid enlargement maximum reached. Ending simulation<br></p>
         </div>
-        <div class="column">
+        <div class="w3-rest" style="min-width: 17em">
             <div id="buttons">
                 <button onclick="setupHexWalk()" id="loadHexGrid">Load Hex Grid</button>
                 <button onclick="setupSquareWalk()" id="loadSquareGrid" style="margin-bottom: 2em;">Load Square Grid</button>
@@ -102,13 +119,20 @@
                 <button onclick="pause()" id="pausebutton">Start</button>
                 <button onclick="restart()" id="restartbutton">Restart</button>
                 <button onclick="move()" id="movebutton">Move</button>
-                <p id="speed" style="margin-left: 3em; margin-right: 1em;">Speed: 1</p>
+                <p id="speed" style="margin-left: 3em; margin-right: 1em;">Moves per update: 1</p>
                 <button onclick="addSpeed(-100)" id="minusbutton">-100</button>
                 <button onclick="addSpeed(-10)" id="minusbutton">-10</button>
                 <button onclick="addSpeed(-1)" id="minusbutton">-1</button>
                 <button onclick="addSpeed(1)" id="plusbutton">+1</button>
                 <button onclick="addSpeed(10)" id="plusbutton">+10</button>
                 <button onclick="addSpeed(100)" id="plusbutton">+100</button>
+
+                <p id="delay" style="margin-left: 3em; margin-right: 1em;">Delay per update: 0</p>
+                <button onclick="addDelay(-10)" id="minusbutton">-10</button>
+                <button onclick="addDelay(-1)" id="minusbutton">-1</button>
+                <button onclick="addDelay(1)" id="plusbutton">+1</button>
+                <button onclick="addDelay(10)" id="plusbutton">+10</button>
+                
                 <p id="counter" style="margin-left: 2em;">Counter: 0</p>
             </div>
 
@@ -116,7 +140,10 @@
 
             <div class="patterns">
                 <div id="hexpatterns">
-                    <p>Cool patterns for hexagonal grid walk</p>
+                    <p>Actions for hexagonal grid:</p>
+                    <img src="HexActions.svg" width="150em">
+
+                    <p>Interesting patterns for hexagonal grid walk</p>
                     <button onclick="setPattern('WFFLWL')">hexagonal spiral: WFFLWL</button><br>
                     <button onclick="setPattern('WRL')">Instant highway: WRL</button><br>
                     <button onclick="setPattern('WRWQ')">Instant highway 2: WRWQ</button><br>
@@ -125,7 +152,10 @@
                 </div>
 
                 <div id="squarepatterns">
-                    <p>Cool patterns for squared grid walk</p>
+                    <p>Actions for squared grid:</p>
+                    <img src="SquareActions.svg" width="150em">
+    
+                    <p>Interesting patterns for squared grid walk</p>
                     <button onclick="setPattern('LLRR')">Symmetric pattern: LLRR</button><br>
                     <button onclick="setPattern('RLLR')">Symmetric pattern: RLLR</button><br>
                     <button onclick="setPattern('LRRRRRLLR')">Squared pattern: LRRRRRLLR</button><br>
@@ -146,14 +176,14 @@
         <p>Langton's ant is a simulation of a cellular automaton. The ant walks on the grid. Each time he enters a cell, its direction is adjusted according to the pattern and the level of the cell. All cells start with level 0. The level of the cell is incremented each time the ant passes the cell. The level is cyclic, which means that if the ant passes a cell for the (n+1)-th time (with n being the length of the pattern), the level becomes 0 again. This simulator features a squared grid and a hexagonal grid, with 4 and 6 possible pattern actions respectively. The syntax for the actions is as follows:
         </p>
 
-        <div class="row" style="text-align: center;">
-            <div class="column">
+        <div class="w3-row" style="text-align: center;">
+            <div class="w3-col" style="width: 50%; min-width: 20em; text-align: center;">
                 <p>Actions for the squared grid:</p>
                 <img src="SquareActions.svg" width="300em" ></img>
             </div>
-            <div class="column">
+            <div class="w3-col" style="width: 50%; min-width: 20em; text-align: center;">
                 <p>Actions for the hexagonal grid:</p>
-                <img src="HexActions.svg" width="300em"></img>
+                <img src="HexActions.svg" width="300em">
             </div>
         </div>
 
@@ -163,8 +193,11 @@
         </div>
 
         <h3>Interface</h3>
-        <p>You can input your own patterns in the interface on the right. Click on the pre-specified patterns to load an interesting pattern. 
+        <p>With the top two buttons you can select between the squared grid and the hexagonal grid. Use the <z>Start</z>-button to start, pause and continue the simulation. With <z>Move</z> you can manually move the ant around. You can enter your own patterns and confirm them using the <z>Input pattern</z>-button. Click on the pre-specified patterns to load an interesting pattern. 
         </p>
+
+        <h3>References</h3>
+        <a href="https://en.wikipedia.org/wiki/Langton%27s_ant" target="_blank">Wikipedia (Langton's Ant)</a>
     </div>
 
     <p id="framerate">-fps</p>
