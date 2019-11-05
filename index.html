@@ -2,8 +2,9 @@
     <title>Langton's Ant Simulator</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
-    <script src="hexwalk.js"></script>
-    <script src="squarewalk.js"></script>
+    <script src="antwalk.js"></script>
+    <script src="hexagonal.js"></script>
+    <script src="square.js"></script>
     <script src="sketch.js"></script>
 
     <style>
@@ -83,7 +84,6 @@
             <div id="CanvasHolder"></div>
         </div>
         <div class="column">
-            <p id="enlargewarning">Grid enlargement maximum reached<br></p>
             <div id="buttons">
                 <button onclick="setupHexWalk()" id="loadHexGrid">Load Hex Grid</button>
                 <button onclick="setupSquareWalk()" id="loadSquareGrid" style="margin-bottom: 2em;">Load Square Grid</button>
@@ -99,6 +99,7 @@
                 <button onclick="addSpeed(10)" id="plusbutton">+10</button>
                 <button onclick="addSpeed(100)" id="plusbutton">+100</button>
                 <p id="counter" style="margin-left: 2em;">Counter: 0</p>
+                <p id="enlargewarning">Grid enlargement maximum reached<br></p>
             </div>
 
             <div id="inputpattern"></div>

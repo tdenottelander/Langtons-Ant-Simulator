@@ -31,7 +31,7 @@ function setupHexWalk(pattern){
     height = 700
     reset()
     displayPatterns("hex")
-    antwalk = new Hexwalk(10, width, height, pattern)
+    antwalk = new Antwalk(10, width, height, pattern, "hex")
     antwalk.counterElement = document.getElementById("counter")
 }
 
@@ -44,7 +44,7 @@ function setupSquareWalk(pattern){
     height = 700
     reset()
     displayPatterns("square")
-    antwalk = new Squarewalk(10, 10, width, pattern)
+    antwalk = new Antwalk(10, width, height, pattern, "square")
     antwalk.counterElement = document.getElementById("counter")
 }
 
@@ -108,7 +108,7 @@ function setPattern(pattern){
     restart()
 }
 
-function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
-}
+// function windowResized() {
+    // resizeCanvas(windowWidth, windowHeight);
+// }
 
